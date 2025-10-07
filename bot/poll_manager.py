@@ -32,4 +32,4 @@ class PollManager:
         self.polls[poll_id]['answers'][user_id]['option_ids'] = option_ids
         self.polls[poll_id]['answers'][user_id]['user'] = poll_answer.user.full_name
         
-        print(self.polls)
+        # print(self.polls)
