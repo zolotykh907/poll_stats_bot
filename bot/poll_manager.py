@@ -12,3 +12,18 @@ class PollManager:
         )
 
         return poll_message
+    
+
+    def save_poll_answer(self, poll_answer):
+        poll_id = poll_answer.poll_id
+        user_id = poll_answer.user.id
+        option_ids = poll_answer.option_ids
+
+        if poll_id not in self.polls:
+            self.polls[poll_id] = {}
+
+        self.polls[poll_id][user_id] = {}
+        self.polls[poll_id][user_id]['option_ids'] = option_ids
+        self.polls[poll_id][user_id]['user'] = poll_answer.user.full_name
+        
+        print(self.polls)
