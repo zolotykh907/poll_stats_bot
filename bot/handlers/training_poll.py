@@ -11,11 +11,7 @@ class TrainingPollState(StatesGroup):
 @router.message(Command("training_poll"))
 async def cmd_training_poll(message, state):
     await state.set_state(TrainingPollState.question_state)
-    await message.answer("✏️ Введите название опроса:")
-
-    # await poll_manager.create_poll(chat_id=message.chat.id, 
-    #                                question=question, 
-    #                                options=options)
+    await message.answer("Введите название опроса:")
     
 @router.message(TrainingPollState.question_state)
 async def poll_get_question(message, state, poll_manager):
@@ -30,5 +26,5 @@ async def poll_get_question(message, state, poll_manager):
 
 @router.poll_answer()
 async def training_poll_answer(poll_answer, poll_manager):
-    print(f"💾 Ответ получен от {poll_answer.user.full_name}")
+    print(f"{poll_answer.user.full_name} проголосовал")
     poll_manager.save_poll_answer(poll_answer)
