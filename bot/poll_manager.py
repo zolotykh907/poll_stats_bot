@@ -11,6 +11,12 @@ class PollManager:
             is_anonymous=False
         )
 
+        self.polls[poll_message.poll.id] = {
+            "question": question,
+            "options": options,
+            "answers": {}
+        }
+
         return poll_message
     
 
@@ -19,8 +25,8 @@ class PollManager:
         user_id = poll_answer.user.id
         option_ids = poll_answer.option_ids
 
-        if poll_id not in self.polls:
-            self.polls[poll_id] = {}
+        # if poll_id not in self.polls:
+        #     self.polls[poll_id] = {}
 
         self.polls[poll_id][user_id] = {}
         self.polls[poll_id][user_id]['option_ids'] = option_ids
