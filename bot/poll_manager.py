@@ -28,8 +28,8 @@ class PollManager:
         # if poll_id not in self.polls:
         #     self.polls[poll_id] = {}
 
-        self.polls[poll_id][user_id] = {}
-        self.polls[poll_id][user_id]['option_ids'] = option_ids
-        self.polls[poll_id][user_id]['user'] = poll_answer.user.full_name
+        self.polls[poll_id]['answers'][user_id] = {}
+        self.polls[poll_id]['answers'][user_id]['option_ids'] = option_ids
+        self.polls[poll_id]['answers'][user_id]['user'] = poll_answer.user.full_name
         
         print(self.polls)
